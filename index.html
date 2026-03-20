@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arbin Shrestha – Full Stack • Backend • Data • AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #05050a;
+            color: #e2e8f0;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Animated tech-themed background */
+        .bg-animation {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: linear-gradient(135deg, #0a001f 0%, #140033 30%, #1e004a 50%, #140033 70%, #0a001f 100%);
+            background-size: 300% 300%;
+            animation: gradientFlow 45s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating tech symbols / icons (pure CSS) */
+        .tech-float {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .tech-item {
+            position: absolute;
+            color: rgba(124, 58, 237, 0.15);
+            font-family: 'Courier New', monospace;
+            font-size: 2.2rem;
+            font-weight: bold;
+            animation: floatTech linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes floatTech {
+            0% {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0.1;
+            }
+
+            30% {
+                opacity: 0.7;
+            }
+
+            70% {
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: translateY(-30vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.4rem 7%;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e293b;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #f1f5f9;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.8rem;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        nav a:hover {
+            color: #e2e8f0;
+        }
+
+        main {
+            padding: 140px 7% 100px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+
+        .hero-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #4f46e5;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.25);
+            margin-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.2rem);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #f1f5f9;
+        }
+
+        .hero .role {
+            font-size: 1.4rem;
+            color: #a78bfa;
+            margin-bottom: 1.6rem;
+            font-weight: 500;
+        }
+
+        .hero .contact {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .hero .contact a {
+            color: #a78bfa;
+            text-decoration: none;
+        }
+
+        .section {
+            margin-bottom: 8.5rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 2.4rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.7rem;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+            border-radius: 2px;
+        }
+
+        .summary {
+            max-width: 820px;
+            margin: 0 auto 3.5rem;
+            font-size: 1.16rem;
+            color: #cbd5e1;
+            text-align: center;
+        }
+
+        .video-section {
+            max-width: 420px;
+            margin: 0 auto 5rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 177.78%;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+            border: 1px solid #1e293b;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 1.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #6366f1;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: #e2e8f0;
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 1.3rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.7rem;
+            color: #cbd5e1;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: #a78bfa;
+            position: absolute;
+            left: -1.3rem;
+            font-size: 1.4rem;
+        }
+
+        .whatsapp-cta {
+            text-align: center;
+            margin: 4rem 0 5rem;
+        }
+
+        .whatsapp-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 1rem 2.2rem;
+            background: #25D366;
+            color: white;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 213, 102, 0.3);
+        }
+
+        .whatsapp-cta a:hover {
+            background: #20b858;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37, 213, 102, 0.4);
+        }
+
+        .social {
+            text-align: center;
+            margin: 5rem 0 4rem;
+        }
+
+        .social a {
+            margin: 0 1.4rem;
+            font-size: 1.9rem;
+            color: #94a3b8;
+            transition: all 0.25s;
+        }
+
+        .social a:hover {
+            color: #c4b5fd;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4.5rem 1rem 3rem;
+            color: #64748b;
+            font-size: 0.96rem;
+            border-top: 1px solid #1e293b;
+            background: rgba(10, 10, 20, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.2rem 6%;
+            }
+
+            nav {
+                gap: 1.8rem;
+            }
+
+            nav a {
+                font-size: 0.92rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .contact span {
+                display: block;
+                margin: 0.6rem 0;
+            }
+
+            .video-section {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-animation"></div>
+
+    <div class="tech-float" id="techFloat"></div>
+
+    <header>
+        <div class="logo">Arbin Shrestha</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#summary">Summary</a>
+            <a href="#video">Video</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home" class="hero">
+            <img src="Screenshot_20260221_153939_Photos.jpg.jpeg" alt="Arbin Shrestha" class="hero-photo">
+
+            <h1>Arbin Shrestha</h1>
+            <div class="role">🎓 Computer Engineer | 💻 AI/ML & Data Science Enthusiast | 📊 Tech Content Creator | 🔬 Research-Oriented Innovator | 🚀 Passionate about Problem-Solving & Emerging Technologies</div>
+            
+
+            <div class="contact">
+                <span>📞 <a href="tel:+9779863498279">+977-9863498279</a></span>
+                <span>📍 Kathmandu, Nepal</span>
+                <span>✉️ <a href="mailto:arbinshrestha066@gmail.com">arbinshrestha066@gmail.com</a></span>
+            </div>
+        </section>
+
+        <section id="summary" class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary">
+                Recent Bachelor of Computer Engineering graduate with strong foundations in full-stack development, data
+                analysis, backend systems, and artificial intelligence. Experienced in building scalable web
+                applications, transforming raw data into insights, and developing efficient APIs and machine learning
+                workflows. Proficient in Python, JavaScript, Django, PostgreSQL, React, and modern AI tools. Passionate
+                about creating end-to-end solutions and continuously learning cutting-edge technologies.
+            </p>
+        </section>
+
+        <section id="video" class="section video-section">
+            <h2 class="section-title">Introduction Video</h2>
+            <div class="video-wrapper">
+                <video controls preload="metadata" poster="Screenshot_20260221_153939_Photos.jpg.jpeg">
+                    <source src="WhatsApp Video 2026-02-23 at 23.05.27.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>JavaScript</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Frontend & Full Stack</h3>
+                    <ul>
+                        <li>HTML / CSS / React</li>
+                        <li>Responsive Design</li>
+                        <li>API Integration</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Backend & Databases</h3>
+                    <ul>
+                        <li>Django • Flask</li>
+                        <li>REST / GraphQL</li>
+                        <li>PostgreSQL • MongoDB</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Data & AI/ML</h3>
+                    <ul>
+                        <li>Pandas • NumPy</li>
+                        <li>Scikit-learn • TensorFlow</li>
+                        <li>Data Visualization</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Tools & Platforms</h3>
+                    <ul>
+                        <li>Git / GitHub</li>
+                        <li>Docker basics</li>
+                        <li>VS Code • Jupyter</li>
+                        <li>Cloud (AWS / GCP intro)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section" >
+            <h2 class="section-title">Academic Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Detecting Inappropriate AI-Generated Content</h3>
+                    <p>Multi-feature ML framework for parental control — filtering inappropriate cartoon/media content.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>DeepChromatic – Image Colorization</h3>
+                    <p>CNN-based automatic colorization of grayscale images.</p>
+                </div>
+                <div class="card">
+                    <h3>Air Quality Prediction System</h3>
+                    <p>Time-series forecasting of air quality using environmental data and ML models.</p>
+                </div>
+                <div class="card">
+                    <h3>Expression Converter Tool</h3>
+                    <p>Algorithm for converting infix expressions to postfix/prefix notation.</p>
+                </div>
+                <div class="card">
+                    <h3>Order Tracking Desktop App (.NET)</h3>
+                    <p>Windows application for managing customer orders and inventory.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Get in Touch</h2>
+
+            <div class="whatsapp-cta">
+                <a href="https://wa.me/9779863498279" target="_blank">
+                    <span>Chat with me on WhatsApp</span>
+                </a>
+            </div>
+
+            <div style="text-align:center; font-size:1.15rem; color:#cbd5e1; margin: 2rem 0 4rem;">
+                <p>Email: <a href="mailto:arbinshrestha066@gmail.com">arbinshrestha066@gmail.com</a></p>
+            </div>
+
+            <div class="social">
+                <a href="https://www.linkedin.com/in/àrbîñ-shrésthá-01602321b" target="_blank">LinkedIn</a>
+                <a href="https://github.com/arbin-Stha" target="_blank">GitHub</a>
+                <a href="https://www.facebook.com/share/1CACAnvke8/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/mr.arbin_55" target="_blank">Instagram</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Arbin Shrestha</p>
+        <p style="margin-top:0.6rem; font-size:0.92rem; opacity:0.9;">
+            Kathmandu, Nepal • Full Stack Development • Data • Artificial Intelligence
+        </p>
+    </footer>
+
+    <script>
+        // Floating tech symbols
+        const techItems = ['{ }', '</>', 'AI', 'DB', 'λ', 'π', 'SQL', 'React', 'Python', 'ML', 'API', 'Git', 'Cloud', 'Data'];
+        const container = document.getElementById('techFloat');
+
+        for (let i = 0; i < 18; i++) {
+            const item = document.createElement('div');
+            item.className = 'tech-item';
+            item.textContent = techItems[Math.floor(Math.random() * techItems.length)];
+
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.top = Math.random() * 100 + 'vh';
+            item.style.fontSize = (Math.random() * 1.8 + 1.6) + 'rem';
+            item.style.animationDuration = (Math.random() * 40 + 35) + 's';
+            item.style.animationDelay = Math.random() * -50 + 's';
+
+            container.appendChild(item);
+        }
+    </script>
+
+</body>
+
+</html>
